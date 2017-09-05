@@ -1,5 +1,5 @@
 FROM       kaixhin/cuda-caffe:8.0
-MAINTAINER Dennis Ludl "https://bitbucket.org/cogsysrt/ml-docker"
+MAINTAINER Dennis Ludl "https://github.com/noboevbo/machine-learning-docker"
 
 RUN apt-get update
 
