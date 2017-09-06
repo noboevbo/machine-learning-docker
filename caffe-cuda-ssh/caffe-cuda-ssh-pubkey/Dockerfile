@@ -4,6 +4,9 @@ MAINTAINER Dennis Ludl "https://github.com/noboevbo/machine-learning-docker"
 RUN apt-get update
 
 RUN apt-get install -y openssh-server
+RUN apt-get install -y sudo #For automated pip installs via PyCharm
+RUN echo 'root:root' |chpasswd
+
 RUN mkdir /var/run/sshd
 
 #ENV Variables for SSH access
