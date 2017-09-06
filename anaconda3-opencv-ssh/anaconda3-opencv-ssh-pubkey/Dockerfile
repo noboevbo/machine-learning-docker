@@ -1,20 +1,15 @@
-FROM       kaixhin/cuda-caffe:8.0
+FROM       continuumio/anaconda3:latest
 MAINTAINER Dennis Ludl "https://github.com/noboevbo/machine-learning-docker"
 
 RUN apt-get update
+
+RUN conda install -c menpo opencv 
 
 RUN apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 
 #ENV Variables for SSH access
 RUN echo "export PATH=${PATH}" >> /root/.bashrc
-RUN echo "export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" >> /root/.bashrc
-RUN echo "export PYTHONPATH=${PYTHONPATH}" >> /root/.bashrc
-RUN echo "export CUDA_VERSION=${CUDA_VERSION}" >> /root/.bashrc
-RUN echo "export NVIDIA_CUDA_VERSION=${NVIDIA_CUDA_VERSION}" >> /root/.bashrc
-RUN echo "export CUDA_PKG_VERSION=${CUDA_PKG_VERSION}" >> /root/.bashrc
-RUN echo "export NVIDIA_VISIBLE_DEVICES=${NVIDIA_VISIBLE_DEVICES}" >> /root/.bashrc
-RUN echo "export NVIDIA_DRIVER_CAPABILITIES=${NVIDIA_DRIVER_CAPABILITIES}" >> /root/.bashrc
 
 #SSHD Config
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
